@@ -184,10 +184,18 @@ static PyMethodDef g_PyFuncs[] = {
     {NULL, NULL, 0, NULL}
 };
 
+static struct PyModuleDef symdumpmodule = {
+   PyModuleDef_HEAD_INIT,
+   "symdump",
+   NULL,
+   -1,
+   g_PyFuncs
+};
+
 // ============================================================================
 // >> INITIALIZATION FUNCTION
 // ============================================================================
-PyMODINIT_FUNC initsymdump()
+PyMODINIT_FUNC PyInit_symdump(void)
 {
-    Py_InitModule("symdump", g_PyFuncs);
+    return PyModule_Create(&symdumpmodule);
 }
